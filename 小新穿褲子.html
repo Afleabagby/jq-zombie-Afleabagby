@@ -8,7 +8,7 @@
 
    body{
         background-position:fixed;
-        background:url('bg4.jpg') no-repeat center/cover;
+        background:url('./圖片素材/bg4.jpg') no-repeat center/cover;
    }
 
 
@@ -20,7 +20,7 @@
         border-radius:25px;
         border:solid 5px black;
         /* background:white; */
-        background:url('home.jpg') center center/cover;
+        background:url('./圖片素材/home.jpg') center center/cover;
         overflow:hidden;
         position:relative;
         cursor:url('../打殭屍/cursor_white.png')50 50, auto;
@@ -99,16 +99,16 @@
 <div id="game"></div>
 
 <div class="board">
-    <div><img style="width:50px;height:50px;" src="./score.png" alt=""><span id="text-score">0</span></div>
-    <div><img style="width:50px;height:50px;" src="./free-time.png" alt="">
+    <div><img style="width:50px;height:50px;" src=".//圖片素材/score.png" alt=""><span id="text-score">0</span></div>
+    <div><img style="width:50px;height:50px;" src=".//圖片素材/free-time.png" alt="">
         <span id="text-time">20</span></div>
 
 
 
 
 
-    <div id="white"><img src="./小白.png" alt=""></div>
-    <div id="btn-start"><img src="./play.png" alt=""></div>
+    <div id="white"><img src=".//圖片素材/小白.png" alt=""></div>
+    <div id="btn-start"><img src=".//圖片素材/play.png" alt=""></div>
 
 </div>
 
@@ -182,7 +182,7 @@
 
                     // 每秒隨機出現小新
                     if(rand(10)>5){
-                        $('#game').append(`<img src="./屁屁星人4.gif" id="shin${shinid}">`)
+                        $('#game').append(`<img src=".//圖片素材/屁屁星人4.gif" id="shin${shinid}">`)
                         $(`#shin${shinid}`).css({
                             left:rand(70) + "%",
                             top: rand(70) + "%"
@@ -192,7 +192,7 @@
                     }
                     //  每秒隨機出現小葵
                     if(rand(8)>5){
-                        $('#game').append(`<img src="./小葵.png"  id="kui${kuiid}">`)
+                        $('#game').append(`<img src=".//圖片素材/小葵.png"  id="kui${kuiid}">`)
                         $(`#kui${kuiid}`).css({
                             left:rand(80) + "%",
                             top: rand(80) + "%"
@@ -207,8 +207,8 @@
 
 
             $('#game').on('click','img', function(){
-            if ($(this).attr('src') === './屁屁星人4.gif'){
-                $(this).attr('src', './小新揍.png')
+            if ($(this).attr('src') === './/圖片素材/屁屁星人4.gif'){
+                $(this).attr('src', './/圖片素材/小新揍.png')
                 $(this).fadeOut(1000)
                 $(this).stop();
                 $(this).css('pointer-events', 'none')
@@ -216,8 +216,8 @@
                 $('#text-score').text(score)
             }
             
-            if($(this).attr('src') === './小葵.png'){
-                   $(this).attr('src', './小葵哭.png')
+            if($(this).attr('src') === './/圖片素材/小葵.png'){
+                   $(this).attr('src', './/圖片素材/小葵哭.png')
                    $(this).fadeOut(1000)
                    $(this).stop()
                    $(this).css('pointer-events', 'none')
