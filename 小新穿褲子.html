@@ -4,19 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <style>
 
+    
    body{
-        background-position:fixed;
-        background:url('./圖片素材/bg4.jpg') no-repeat center/cover;
-   }
+        margin:0;
+   } 
 
+    #bg{
+        height:100vh;
+        width:100vw;
+        background-position:center;
+        background:url('./圖片素材/bg4.jpg') no-repeat center/cover;
+        position:relative;
+    }   
 
 
     #game{
+        background-color:green;
+        top:10%;
         left:5%;
-        width:600px;
-        height:500px;
+        width:50%;
+        height:70%;
         border-radius:25px;
         border:solid 5px black;
         /* background:white; */
@@ -30,25 +40,41 @@
         height:150px;
     }
 
-    .col{
+/* 加扣分動畫 */
+    .addPoint{
+        color:white;
+        font-size:2rem;
+        position:absolute;
+        bottom:80%;
+    }
+
+    .minusPoint{
+        color:red;
+        font-size:2rem;
+        position:absolute;
+        bottom:80%;
+    }
+
+    /* .col{
         position:fixed;
         width:500px;
         height:500px;
         /* top:5%;
         right:5%; */
-        background:red;
-    }
+        /* background:red; */
+    
     .board{
+        /* background:red; */
         left:10%;
         width:500px;
         height:100px;
         position:relative;
-        top:0px;
+        /* top:0px; */
+        top:10%;
         
     }
 
     #text-time{
-      
         position:absolute;
         left:15%;
         bottom:10%;
@@ -85,7 +111,7 @@
         transform:scale(1.5);
     }
 
-
+   
 
    
 
@@ -95,28 +121,24 @@
 
 <!-- 
 <div class="box"> -->
-   
-<div id="game"></div>
 
-<div class="board">
-    <div><img style="width:50px;height:50px;" src=".//圖片素材/score.png" alt=""><span id="text-score">0</span></div>
-    <div><img style="width:50px;height:50px;" src=".//圖片素材/free-time.png" alt="">
-        <span id="text-time">20</span></div>
+<div id="bg">
+    <div id="game"></div>
 
-
-
-
-
-    <div id="white"><img src=".//圖片素材/小白.png" alt=""></div>
-    <div id="btn-start"><img src=".//圖片素材/play.png" alt=""></div>
+    <div class="board">
+        <div><img style="width:50px;height:50px;" src=".//圖片素材/score.png" alt=""><span id="text-score">0</span></div>
+        <div><img style="width:50px;height:50px;" src=".//圖片素材/free-time.png" alt="">
+            <span id="text-time">20</span></div>
+        <div id="white"><img src=".//圖片素材/小白.png" alt=""></div>
+        <div id="btn-start"><img src=".//圖片素材/play.png" alt=""></div>
+    </div>
 
 </div>
 
 
-</div>
 
 <!-- </div> -->
-
+    <script src="sweetalert2.all.min.js"></script>
     <script src="../jquery-3.5.1.min.js"></script>
     <script>
         let score = 0
@@ -152,8 +174,6 @@
 
 
 
-
-
         $('#btn-start').click(function(){
             // 停用開始按鈕
             $('#btn-start').attr('disabled', true)
@@ -175,9 +195,20 @@
                     clearInterval(timer)
                     $('#btn-start').attr('disabled', false)
                     $('#game img').remove()
-                    setTimeout(()=>{
-                        alert('時間到!')
-                    }, 50)
+                    setTimeout(() => {
+                        Swal.fire({
+                            title: '時間到!!',
+                            text: `你拿了${score}分!!`,
+                            showClass: {
+                            popup: 'animate__animated animate__bounce'
+                            },
+                            hideClass: {
+                            popup: 'animate__animated animate__fadeOutUp'}
+                            })
+                        }, 50);
+                    // setTimeout(()=>{
+                    //     alert('時間到!')
+                    // }, 50)
                 }else {
 
                     // 每秒隨機出現小新
@@ -204,6 +235,8 @@
                 }
                 },1000)
             })
+
+        
 
 
             $('#game').on('click','img', function(){
